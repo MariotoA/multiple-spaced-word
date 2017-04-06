@@ -46,37 +46,51 @@ public class MultipleSpacedStringTest {
     @Test
     public void testInsert0Spaces(){
         MultipleSpacedString str = new MultipleSpacedString("hello hello");
-        str.insertSpaces(1);
+        str.insertSpaces(0);
         assertEquals("Falla la inserción de 0.",str.toString(),"hellohello");
     }
     
     @Test
     public void testInsert1Space(){
-        
+        MultipleSpacedString str = new MultipleSpacedString("hello hello");
+        str.insertSpaces(1);
+        assertEquals("Falla la inserción de 1.",str.toString(),"hello hello");
+    
     }
     
     @Test
     public void testInsert6Spaces(){
-        
+        MultipleSpacedString str = new MultipleSpacedString("hello hello");
+        str.insertSpaces(6);
+        assertEquals("Falla la inserción de 6.",str.toString(),"hello      hello");
+    
     }
     
-    @Test
+    @Test(expected=MultipleSpacedStringException.class)
     public void testInsertNegative2Spaces(){
+        MultipleSpacedString str = new MultipleSpacedString("hello hello");
+        str.insertSpaces(-2);
+    }
+    
+    @Test
+    public void testInsertInOneWordStringShouldDoNothing(){
+        MultipleSpacedString str = new MultipleSpacedString("hello");
+        str.insertSpaces(1);
+        assertEquals("Falla la inserción en string de una palabra.",str.toString(),"hello");
     
     }
     
     @Test
-    public void testInsertInOneWordString(){
-    
+    public void testInsertInThreeWordString(){
+        MultipleSpacedString str = new MultipleSpacedString("hello hello hello");
+        str.insertSpaces(2);
+        assertEquals("Falla la inserción en string de 3 palabras.",str.toString(),"hello  hello  hello");
     }
     
     @Test
-    public void testInsertInTwoWordString(){
-    
-    }
-    
-    @Test
-    public void testInsertInEmptyString(){
-    
+    public void testInsertInEmptyStringShouldDoNothing(){
+        MultipleSpacedString str = new MultipleSpacedString("");
+        str.insertSpaces(2);
+        assertEquals("Falla la inserción en string vacía.",str.toString(),"");
     }
 }
