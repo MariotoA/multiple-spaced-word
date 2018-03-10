@@ -1,3 +1,3 @@
 # multiple-spaced-word
 An equally spaced string with variable space size.
-from: https://programmingpraxis.com/2017/04/04/double-space/
+Idea from: https://programmingpraxis.com/2017/04/04/double-space/
